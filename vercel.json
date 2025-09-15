@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build-all-storybooks",
+  "outputDirectory": "packages/wui-react/storybook-static",
+  "installCommand": "pnpm install",
+  "framework": "vite"
+}

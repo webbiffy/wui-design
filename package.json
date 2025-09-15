@@ -1,0 +1,31 @@
+{
+  "name": "wui-design",
+  "version": "1.0.0",
+  "description": "Wui Design kit",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "build": "pnpm run --filter='./packages/*' build",
+    "build-all-storybooks": "pnpm run --filter='./packages/*' build-storybook",
+    "release": "changeset publish",
+    "sync-changelogs": "pnpm run --filter='./packages/*' sync-changelog",
+    "wui-react:install": "pnpm install --filter @wui.design/wui-react",
+    "wui-react:dev": "pnpm --filter @wui.design/wui-react dev",
+    "wui-react:build": "pnpm --filter @wui.design/wui-react build",
+    "wui-react:story": "pnpm --filter @wui.design/wui-react storybook",
+    "wui-react:story-build": "pnpm --filter @wui.design/wui-react build-storybook",
+    "wui-react:story-build-with-tests": "pnpm run wui-react:test && pnpm run wui-react:lint && pnpm run wui-react:type-check && pnpm run wui-react:story-build",
+    "wui-react:build-watch": "pnpm --filter @wui.design/wui-react build:watch",
+    "wui-react:test": "pnpm run --filter @wui.design/wui-react test run",
+    "wui-react:lint": "pnpm run --filter @wui.design/wui-react lint",
+    "wui-react:type-check": "pnpm run --filter @wui.design/wui-react type-check"
+  },
+  "author": "Webster P.",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.5"
+  }
+}
