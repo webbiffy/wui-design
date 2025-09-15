@@ -28,7 +28,7 @@ React UI component library with TypeScript support, built on shadcn/ui and Radix
 
 ```bash
 # Clone the repository
-git clone https://github.com/wui.design/wui-design.git
+git clone https://github.com/webbiffy/wui-design.git
 cd wui-design
 
 # Install dependencies for entire workspace
