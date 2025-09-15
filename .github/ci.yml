@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm run --recursive --if-present test
+
+      - name: Run linting
+        run: pnpm run --recursive --if-present lint
+
+      - name: Run type checking
+        run: pnpm run --recursive --if-present type-check
+
+      - name: Test Storybook build
+        run: pnpm run --recursive --if-present build-storybook
+
+  # sync-changelogs:
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'push'
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Setup Node.js 20.x
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: "20"
+
+  #     - name: Setup pnpm
+  #       uses: pnpm/action-setup@v4
+  #       with:
+  #         version: 10.12.4
+
+  #     - name: Install dependencies
+  #       run: pnpm install --frozen-lockfile
+
+  #     - name: Sync changelogs
+  #       run: pnpm run --recursive --if-present sync-changelog
