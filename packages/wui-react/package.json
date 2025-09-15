@@ -1,6 +1,6 @@
 {
   "name": "@wui.design/wui-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern UI kit built with React, Tailwind CSS, and shadcn/ui",
   "type": "module",
   "main": "./dist/index.js",
