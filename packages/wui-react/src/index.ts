@@ -1,11 +1,11 @@
 // Styles
-import './index.css'
+import "./index.css";
 
 // Components
-export { Button, buttonVariants } from './components/ui/button'
+export { Button, buttonVariants } from "@/components/ui/button";
 
 // Utilities
-export { cn } from './lib/utils'
+export { cn } from "./lib/utils";
 
 // Types
-export type { ButtonProps } from './components/ui/button'
+export type { ButtonProps } from "@/components/ui/button";

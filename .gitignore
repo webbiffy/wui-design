@@ -43,9 +43,6 @@ packages/*/coverage/
 
 # Storybook
 storybook-static/
-*.story.tsx
-*.stories.tsx
-*.stories.js
 
 # Test output
 *.log

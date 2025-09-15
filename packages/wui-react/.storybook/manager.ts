@@ -4,8 +4,9 @@ import { themes } from "storybook/theming";
 addons.setConfig({
   theme: {
     ...themes.light,
-    brandTitle: "@wui.design/wui-react-0.0.1",
-    brandUrl: "https://github.com/webbiffy/wui-design",
+    brandTitle: "@wui-react-0.0.1",
+    brandUrl:
+      "https://github.com/webbiffy/wui-design/blob/main/packages/wui-react/README.md",
     brandTarget: "_blank",
 
     //
