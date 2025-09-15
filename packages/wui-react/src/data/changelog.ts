@@ -17,4 +17,18 @@ export interface ChangelogSection {
   changes: ChangelogEntry[];
 }
 
-export const changelog: ChangelogSection[] = [];
+export const changelog: ChangelogSection[] = [
+  {
+    version: "1.0.1",
+    changes: [
+      {
+        type: "patch",
+        commit: "8e88c59",
+        commitUrl: "https://github.com/webbiffy/wui-design/commit/8e88c599e5b6e28113fea73303ebb4b08cde06ff",
+        author: "webbiffy",
+        authorUrl: "https://github.com/webbiffy",
+        description: "initial release for wui design - react"
+      }
+    ]
+  }
+];
