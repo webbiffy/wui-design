@@ -1,0 +1,49 @@
+:root {
+  --wui-background: 210 20% 99%;
+  --wui-foreground: 240 10% 3.9%;
+
+  --wui-primary: 24 100% 50%;
+  --wui-primary-foreground: 0 0% 98%;
+  --wui-neutral: 0 0% 96.1%;
+  --wui-neutral-foreground: 222.2 84% 4.9%;
+  --wui-muted: 210 40% 96%;
+  --wui-muted-foreground: 215.4 16.3% 46.9%;
+  --wui-accent: 210 40% 96%;
+  --wui-accent-foreground: 222.2 84% 4.9%;
+  --wui-success: 150 61% 30%;
+  --wui-success-foreground: 0 0% 98%;
+  --wui-danger: 0 59% 49%;
+  --wui-danger-foreground: 0 0% 98%;
+  --wui-informative: 220 65% 51%;
+  --wui-informative-foreground: 0 0% 98%;
+
+  --wui-border: 214.3 31.8% 91.4%;
+  --wui-input: 214.3 31.8% 91.4%;
+  --wui-ring: 221.2 83.2% 53.3%;
+  --wui-radius: 0.5rem;
+}
+
+.dark {
+  --wui-background: 240 2% 18%;
+  --wui-foreground: 0 0% 98%;
+
+  --wui-primary: 24 100% 50%;
+  --wui-primary-foreground: 0 0% 98%;
+  --wui-neutral: 0 0% 96.1%;
+  --wui-neutral-foreground: 222.2 84% 4.9%;
+  --wui-muted: 210 40% 96%;
+  --wui-muted-foreground: 215.4 16.3% 46.9%;
+  --wui-accent: 210 40% 96%;
+  --wui-accent-foreground: 222.2 84% 4.9%;
+  --wui-success: 150 61% 30%;
+  --wui-success-foreground: 0 0% 98%;
+  --wui-danger: 0 59% 49%;
+  --wui-danger-foreground: 0 0% 98%;
+  --wui-informative: 220 65% 51%;
+  --wui-informative-foreground: 0 0% 98%;
+
+  --wui-border: 217.2 32.6% 17.5%;
+  --wui-input: 240 3.8% 46.1%;
+  --wui-ring: 224.3 76.3% 94.1%;
+  --wui-radius: 0.5rem;
+}
