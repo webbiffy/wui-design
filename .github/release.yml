@@ -41,7 +41,7 @@ jobs:
           vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} --yes
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_UI_REACT_PROJECT_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WUI_REACT_PROJECT_ID }}
 
       # Future packages can be added here by creating separate Vercel projects:
       # - name: Deploy Wui UI Vue to Vercel
