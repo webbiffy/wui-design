@@ -4,7 +4,7 @@
 
 A modern, accessible, and customizable UI kit built with React, TypeScript, Tailwind CSS, and based on shadcn/ui components. Perfect for building consistent user interfaces across Next.js and React applications.
 
-**🌐 [Live Demo](https://wui-react-storybook.vercel.app/)** - Explore all components interactively
+**🌐 [Live Demo](https://wui-design-react.vercel.app/)** - Explore all components interactively
 
 ## ✨ Features
 
@@ -86,7 +86,6 @@ pnpm test:ui
 ```
 
 ## 📖 Storybook
-
 
 View all components in Storybook:
 
