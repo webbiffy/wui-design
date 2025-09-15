@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Download, Loader2Icon, Plus, Trash } from "lucide-react";
 import { fn } from "storybook/test";
 
-import { disableAllExcept, commonArgTypes } from "../../lib/storybook-utils";
+import { disableAllExcept, commonArgTypes } from "@/lib/storybook-utils";
 
 import { Button } from "./button";
 
