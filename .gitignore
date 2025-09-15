@@ -1,0 +1,67 @@
+# Node modules (root and all packages)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Build output (general)
+dist/
+build/
+out/
+coverage/
+
+# Build output in packages
+packages/*/dist/
+packages/*/build/
+packages/*/out/
+packages/*/coverage/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite / Webpack / Parcel cache
+.vite/
+.cache/
+.next/
+.svelte-kit/
+
+# Turborepo
+.turbo/
+
+# Storybook
+storybook-static/
+*.story.tsx
+*.stories.tsx
+*.stories.js
+
+# Test output
+*.log
+test-results/
+coverage/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Mac system files
+.DS_Store
+
+# Git
+*.orig
+
+# Optional npm debug log files
+npm-debug.log*
