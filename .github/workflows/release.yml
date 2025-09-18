@@ -56,6 +56,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          commit: "chore: update versions"
+          title: "chore: update versions"
           # This builds all packages and publishes changed ones
           publish: pnpm run release
         env:

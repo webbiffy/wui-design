@@ -1,10 +1,17 @@
 import { addons } from "storybook/manager-api";
 import { themes } from "storybook/theming";
 
+import { changelog } from "../src/data/changelog";
+
+const getLatestVersion = () => {
+  const latestVersion = changelog[0]?.version || "unknown";
+  return `wui-react-${latestVersion}`;
+};
+
 addons.setConfig({
   theme: {
     ...themes.light,
-    brandTitle: "@wui-react-0.0.1",
+    brandTitle: getLatestVersion(),
     brandUrl:
       "https://github.com/webbiffy/wui-design/blob/main/packages/wui-react/README.md",
     brandTarget: "_blank",
