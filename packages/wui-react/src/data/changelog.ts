@@ -19,6 +19,19 @@ export interface ChangelogSection {
 
 export const changelog: ChangelogSection[] = [
   {
+    version: "1.1.0",
+    changes: [
+      {
+        type: "minor",
+        description: "[#4](https://github.com/webbiffy/wui-design/pull/4) [`3f9730f`](https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5) Thanks [@webbiffy](https://github.com/webbiffy)! - ---"
+      },
+      {
+        type: "patch",
+        description: "[#4](https://github.com/webbiffy/wui-design/pull/4) [`3f9730f`](https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5) Thanks [@webbiffy](https://github.com/webbiffy)! - Add Badge component export"
+      }
+    ]
+  },
+  {
     version: "1.0.1",
     changes: [
       {
