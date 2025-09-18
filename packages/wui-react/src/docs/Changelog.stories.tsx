@@ -204,9 +204,26 @@ const ChangelogViewer = () => {
                   </div>
                   <div className="wui-flex-1 wui-min-w-0">
                     <div className="wui-flex wui-items-start wui-justify-between">
-                      <p className="wui-text-sm wui-text-foreground wui-flex-1">
-                        {change.description}
-                      </p>
+                      <div className="wui-flex-1">
+                        <p className="wui-text-sm wui-text-foreground">
+                          {change.description}
+                        </p>
+                        {change.details && change.details.length > 0 && (
+                          <ul className="wui-mt-2 wui-ml-4 wui-space-y-1">
+                            {change.details.map((detail, detailIndex) => (
+                              <li
+                                key={detailIndex}
+                                className="wui-text-xs wui-text-muted-foreground wui-relative"
+                              >
+                                <span className="wui-absolute -wui-left-3 wui-text-muted-foreground/50">
+                                  •
+                                </span>
+                                {detail}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                       <span
                         className={`wui-ml-2 wui-inline-flex wui-items-center wui-px-2 wui-py-1 wui-rounded-full wui-text-xs wui-font-medium ${getChangeTypeBadge(change.type)}`}
                         aria-label={`Change type: ${change.type}`}
@@ -215,6 +232,22 @@ const ChangelogViewer = () => {
                       </span>
                     </div>
                     <footer className="wui-mt-2 wui-flex wui-items-center wui-space-x-4 wui-text-xs wui-text-muted-foreground">
+                      {change.pr && (
+                        <span className="wui-px-2 wui-py-1 wui-rounded wui-bg-success/10 wui-border wui-border-success/20 hover:wui-bg-success/20 wui-transition-colors">
+                          <a
+                            href={
+                              change.prUrl ??
+                              `https://github.com/webbiffy/wui-design/pull/${change.pr.replace("#", "")}`
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="wui-text-success hover:wui-text-success/80 wui-transition-colors"
+                            title={`View pull request ${change.pr}`}
+                          >
+                            PR{change.pr}
+                          </a>
+                        </span>
+                      )}
                       {change.commit && (
                         <span
                           className={`wui-font-mono wui-px-2 wui-py-1 wui-rounded wui-transition-colors ${
