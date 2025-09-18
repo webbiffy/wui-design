@@ -6,23 +6,17 @@ import react from "eslint-plugin-react";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
 import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
 
-export default tseslint.config(
+export default [
   {
     ignores: ["dist", "node_modules", "storybook-static"],
   },
-  // Base config for all TypeScript files
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettier, // Must be last to override other configs
-    ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parser: tseslint.parser,
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -30,6 +24,7 @@ export default tseslint.config(
       },
     },
     plugins: {
+      "@typescript-eslint": tseslint.plugin,
       react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
@@ -48,6 +43,17 @@ export default tseslint.config(
       },
     },
     rules: {
+      // Base JS rules
+      ...js.configs.recommended.rules,
+
+      // TypeScript Rules
+      ...tseslint.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/no-explicit-any": "warn",
+
       // React Rules
       ...react.configs.recommended.rules,
       ...react.configs["jsx-runtime"].rules,
@@ -84,16 +90,9 @@ export default tseslint.config(
         "warn",
         {
           allowConstantExport: true,
-          allowExportNames: [/.*Variants$/, "cn", "cva"],
+          allowExportNames: ["cn", "cva", "buttonVariants"],
         },
       ],
-
-      // TypeScript Rules (without type-aware rules)
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
-      ],
-      "@typescript-eslint/no-explicit-any": "warn",
 
       // General Rules
       "prefer-const": "error",
@@ -119,6 +118,11 @@ export default tseslint.config(
   },
   {
     files: ["**/*.stories.{ts,tsx}", "src/dev.tsx", "**/*.config.{ts,js}"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
     rules: {
       "react-refresh/only-export-components": "off",
       "import/no-unused-modules": "off",
@@ -129,5 +133,5 @@ export default tseslint.config(
     rules: {
       "no-console": "off",
     },
-  }
-);
+  },
+];
