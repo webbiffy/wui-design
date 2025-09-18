@@ -13,11 +13,13 @@ const generateChangelogData = (sections) => {
 export interface ChangelogEntry {
   type: "major" | "minor" | "patch";
   description: string;
+  details?: string[]; // Additional bullet points or details
   commit?: string;
   commitUrl?: string;
   author?: string;
   authorUrl?: string;
   pr?: string;
+  prUrl?: string;
 }
 
 export interface ChangelogSection {
@@ -59,8 +61,10 @@ const parseChangelog = (content) => {
 
   let currentSection = null;
   let currentChangeType = null;
+  let currentEntry = null;
+  let collectingDetails = false;
 
-  lines.forEach((line) => {
+  lines.forEach((line, index) => {
     // Version headers (## 1.1.0)
     if (line.startsWith("## ")) {
       if (currentSection) sections.push(currentSection);
@@ -68,6 +72,8 @@ const parseChangelog = (content) => {
         version: line.replace("## ", "").trim(),
         changes: [],
       };
+      currentEntry = null;
+      collectingDetails = false;
     }
     // Change type headers (### Minor Changes, ### Patch Changes, etc.)
     else if (line.startsWith("### ")) {
@@ -75,36 +81,153 @@ const parseChangelog = (content) => {
       if (header.includes("major")) currentChangeType = "major";
       else if (header.includes("minor")) currentChangeType = "minor";
       else if (header.includes("patch")) currentChangeType = "patch";
+      currentEntry = null;
+      collectingDetails = false;
     }
-    // Individual changes (- [`6cf7536`](link) Thanks [@user](link)! - description)
+    // Individual changes (- [#4](pr-link) [`6cf7536`](commit-link) Thanks [@user](user-link)! - description)
     else if (line.startsWith("- ") && currentSection && currentChangeType) {
-      // Parse the changeset format with commit and author links
-      const changeMatch = line.match(
-        /- \[`([^`]+)`\]\(([^)]+)\)(?: Thanks \[@([^\]]+)\]\(([^)]+)\))!? ?- (.+)/
-      );
-      if (changeMatch) {
-        currentSection.changes.push({
-          type: currentChangeType,
-          commit: changeMatch[1],
-          commitUrl: changeMatch[2],
-          author: changeMatch[3],
-          authorUrl: changeMatch[4],
-          description: changeMatch[5],
-        });
-      } else {
-        // Fallback for simpler formats
-        const simpleMatch = line.match(/- (.+)/);
-        if (simpleMatch) {
-          currentSection.changes.push({
-            type: currentChangeType,
-            description: simpleMatch[1],
-          });
+      // Finish previous entry if collecting details
+      if (currentEntry && collectingDetails) {
+        currentSection.changes.push(currentEntry);
+      }
+
+      currentEntry = {
+        type: currentChangeType,
+        description: "",
+      };
+      collectingDetails = false;
+
+      // Extract PR number and URL
+      const prMatch = line.match(/\[#(\d+)\]\(([^)]+)\)/);
+      if (prMatch) {
+        currentEntry.pr = `#${prMatch[1]}`;
+        currentEntry.prUrl = prMatch[2];
+      }
+
+      // Extract commit hash and URL
+      const commitMatch = line.match(/\[`([^`]+)`\]\(([^)]+)\)/);
+      if (commitMatch) {
+        currentEntry.commit = commitMatch[1];
+        currentEntry.commitUrl = commitMatch[2];
+      }
+
+      // Extract author and URL
+      const authorMatch = line.match(/Thanks \[@([^\]]+)\]\(([^)]+)\)/);
+      if (authorMatch) {
+        currentEntry.author = authorMatch[1];
+        currentEntry.authorUrl = authorMatch[2];
+      }
+
+      // Extract description - everything after the last "! - " or just after "- "
+      const descMatch = line.match(/! - (.+)$/) || line.match(/^- (.+)$/);
+      if (descMatch) {
+        // Clean up the description by removing PR, commit, and author references
+        let description = descMatch[1];
+        description = description.replace(/\[#\d+\]\([^)]+\)\s*/g, ""); // Remove PR links
+        description = description.replace(/\[`[^`]+`\]\([^)]+\)\s*/g, ""); // Remove commit links
+        description = description.replace(
+          /Thanks \[@[^\]]+\]\([^)]+\)!\s*-?\s*/g,
+          ""
+        ); // Remove author thanks
+        description = description.replace(/^-+\s*/, ""); // Remove leading dashes
+        currentEntry.description = description.trim();
+
+        // Check if description contains "---" which indicates additional details follow
+        if (currentEntry.description.includes("---")) {
+          collectingDetails = true;
+          currentEntry.description = currentEntry.description
+            .replace(/---.*$/, "")
+            .trim();
+        }
+      }
+
+      // Fallback: if no clean description found, use the whole line minus the leading "- "
+      if (!currentEntry.description) {
+        currentEntry.description = line.replace(/^- /, "");
+      }
+
+      // If not collecting details, add the entry immediately
+      if (!collectingDetails) {
+        currentSection.changes.push(currentEntry);
+        currentEntry = null;
+      }
+    }
+    // Handle changeset detail sections (## "@wui.design/wui-react": minor)
+    else if (line.startsWith('  ## "') && line.includes(": ")) {
+      // This is a changeset detail section, extract the description
+      const nextLines = lines.slice(index + 1);
+      let detailsStarted = false;
+      const details = [];
+      let mainDescription = "";
+
+      for (let i = 0; i < nextLines.length; i++) {
+        const nextLine = nextLines[i];
+
+        // Stop if we hit another section
+        if (nextLine.startsWith("##") || nextLine.startsWith("### ")) {
+          break;
+        }
+
+        // Skip empty lines
+        if (!nextLine.trim()) {
+          continue;
+        }
+
+        // If it's a bullet point line
+        if (nextLine.trim().startsWith("- ")) {
+          detailsStarted = true;
+          const detail = nextLine.replace(/^\s*-\s*/, "").trim();
+          if (detail) {
+            details.push(detail);
+          }
+        }
+        // If we haven't started collecting details and it's not empty, it's the main description
+        else if (
+          !detailsStarted &&
+          nextLine.trim() &&
+          !nextLine.startsWith("  ")
+        ) {
+          mainDescription = nextLine.trim();
+        }
+      }
+
+      // Find the most recent entry that matches and update it
+      if (currentSection && currentSection.changes.length > 0) {
+        const lastEntry =
+          currentSection.changes[currentSection.changes.length - 1];
+        if (lastEntry.description.includes("---")) {
+          // Clean up the description by removing all the markdown links
+          let cleanDescription = lastEntry.description;
+          cleanDescription = cleanDescription.replace(
+            /\[#\d+\]\([^)]+\)\s*/g,
+            ""
+          ); // Remove PR links
+          cleanDescription = cleanDescription.replace(
+            /\[`[^`]+`\]\([^)]+\)\s*/g,
+            ""
+          ); // Remove commit links
+          cleanDescription = cleanDescription.replace(
+            /Thanks \[@[^\]]+\]\([^)]+\)!\s*-?\s*/g,
+            ""
+          ); // Remove author thanks
+          cleanDescription = cleanDescription.replace(/---.*$/, "").trim(); // Remove --- and everything after
+
+          lastEntry.description =
+            mainDescription || cleanDescription || "Badge component updates";
+          if (details.length > 0) {
+            lastEntry.details = details;
+          }
         }
       }
     }
   });
 
+  // Handle any remaining entry
+  if (currentEntry) {
+    currentSection.changes.push(currentEntry);
+  }
   if (currentSection) sections.push(currentSection);
+
   return sections;
 };
 

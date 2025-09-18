@@ -4,11 +4,13 @@
 export interface ChangelogEntry {
   type: "major" | "minor" | "patch";
   description: string;
+  details?: string[]; // Additional bullet points or details
   commit?: string;
   commitUrl?: string;
   author?: string;
   authorUrl?: string;
   pr?: string;
+  prUrl?: string;
 }
 
 export interface ChangelogSection {
@@ -23,25 +25,47 @@ export const changelog: ChangelogSection[] = [
     changes: [
       {
         type: "minor",
-        description: "[#4](https://github.com/webbiffy/wui-design/pull/4) [`3f9730f`](https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5) Thanks [@webbiffy](https://github.com/webbiffy)! - ---"
+        description: "Badge component updates",
+        pr: "#4",
+        prUrl: "https://github.com/webbiffy/wui-design/pull/4",
+        commit: "3f9730f",
+        commitUrl:
+          "https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5",
+        author: "webbiffy",
+        authorUrl: "https://github.com/webbiffy",
+        details: [
+          "Add Badge component with bordered, filled variants",
+          "Support for different sizes (default, sm, md) and radius options",
+          "Comprehensive test suite with 10 test cases",
+          "Update theme colors for better dark mode contrast",
+          "Fix Storybook brand title to use dynamic versioning",
+        ],
       },
       {
         type: "patch",
-        description: "[#4](https://github.com/webbiffy/wui-design/pull/4) [`3f9730f`](https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5) Thanks [@webbiffy](https://github.com/webbiffy)! - Add Badge component export"
-      }
-    ]
+        description: "Add Badge component export",
+        pr: "#4",
+        prUrl: "https://github.com/webbiffy/wui-design/pull/4",
+        commit: "3f9730f",
+        commitUrl:
+          "https://github.com/webbiffy/wui-design/commit/3f9730f8ca91b291aec479c2b8a3c82679f585d5",
+        author: "webbiffy",
+        authorUrl: "https://github.com/webbiffy",
+      },
+    ],
   },
   {
     version: "1.0.1",
     changes: [
       {
         type: "patch",
+        description: "initial release for wui design - react",
         commit: "8e88c59",
-        commitUrl: "https://github.com/webbiffy/wui-design/commit/8e88c599e5b6e28113fea73303ebb4b08cde06ff",
+        commitUrl:
+          "https://github.com/webbiffy/wui-design/commit/8e88c599e5b6e28113fea73303ebb4b08cde06ff",
         author: "webbiffy",
         authorUrl: "https://github.com/webbiffy",
-        description: "initial release for wui design - react"
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
