@@ -56,9 +56,9 @@ export const commonArgTypes = {
   contentOnly: () => disableAllExcept(["children"]),
 
   /** Only show variant and size controls */
-  variantAndSize: () => disableAllExcept(["variant", "size"]),
+  variantAndSize: () => disableAllExcept(["variant", "size", "rounded"]),
 
   /** Show main interactive controls */
   interactive: () =>
-    disableAllExcept(["children", "variant", "size", "disabled"]),
+    disableAllExcept(["children", "variant", "size", "disabled", "rounded"]),
 };
