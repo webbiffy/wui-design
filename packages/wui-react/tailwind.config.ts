@@ -26,32 +26,32 @@ const config: Config = {
         background: "hsl(var(--wui-background))",
         foreground: "hsl(var(--wui-foreground))",
         primary: {
-          DEFAULT: "hsl(var(--wui-primary))",
-          foreground: "hsl(var(--wui-primary-foreground))",
+          DEFAULT: "hsl(var(--wui-primary) / <alpha-value>)",
+          foreground: "hsl(var(--wui-primary-foreground) / <alpha-value>)",
         },
         neutral: {
-          DEFAULT: "hsl(var(--wui-neutral))",
-          foreground: "hsl(var(--wui-neutral-foreground))",
+          DEFAULT: "hsl(var(--wui-neutral) / <alpha-value>)",
+          foreground: "hsl(var(--wui-neutral-foreground) / <alpha-value>)",
         },
         success: {
-          DEFAULT: "hsl(var(--wui-success))",
-          foreground: "hsl(var(--wui-success-foreground))",
+          DEFAULT: "hsl(var(--wui-success) / <alpha-value>)",
+          foreground: "hsl(var(--wui-success-foreground) / <alpha-value>)",
         },
         danger: {
-          DEFAULT: "hsl(var(--wui-danger))",
-          foreground: "hsl(var(--wui-danger-foreground))",
+          DEFAULT: "hsl(var(--wui-danger) / <alpha-value>)",
+          foreground: "hsl(var(--wui-danger-foreground) / <alpha-value>)",
         },
         informative: {
-          DEFAULT: "hsl(var(--wui-informative))",
-          foreground: "hsl(var(--wui-informative-foreground))",
+          DEFAULT: "hsl(var(--wui-informative) / <alpha-value>)",
+          foreground: "hsl(var(--wui-informative-foreground) / <alpha-value>)",
         },
         muted: {
-          DEFAULT: "hsl(var(--wui-muted))",
-          foreground: "hsl(var(--wui-muted-foreground))",
+          DEFAULT: "hsl(var(--wui-muted) / <alpha-value>)",
+          foreground: "hsl(var(--wui-muted-foreground) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "hsl(var(--wui-accent))",
-          foreground: "hsl(var(--wui-accent-foreground))",
+          DEFAULT: "hsl(var(--wui-accent) / <alpha-value>)",
+          foreground: "hsl(var(--wui-accent-foreground) / <alpha-value>)",
         },
       },
       borderRadius: {

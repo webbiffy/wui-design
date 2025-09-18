@@ -84,7 +84,7 @@ export default tseslint.config(
         "warn",
         {
           allowConstantExport: true,
-          allowExportNames: ["buttonVariants", "cn", "cva"],
+          allowExportNames: [/.*Variants$/, "cn", "cva"],
         },
       ],
 
