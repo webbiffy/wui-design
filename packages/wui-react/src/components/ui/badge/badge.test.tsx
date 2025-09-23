@@ -35,6 +35,10 @@ describe("Badge", () => {
     badge = screen.getByText("Danger");
     expect(badge).toHaveClass("wui-border-danger", "wui-bg-danger/15");
 
+    rerender(<Badge variant="bordered-informative">Informative</Badge>);
+    badge = screen.getByText("Informative");
+    expect(badge).toHaveClass("wui-border-informative", "wui-bg-informative/15");
+
     // Test filled variants
     rerender(<Badge variant="filled-primary">Primary</Badge>);
     badge = screen.getByText("Primary");
@@ -47,6 +51,10 @@ describe("Badge", () => {
     rerender(<Badge variant="filled-danger">Danger</Badge>);
     badge = screen.getByText("Danger");
     expect(badge).toHaveClass("wui-bg-danger", "wui-text-danger-foreground");
+
+    rerender(<Badge variant="filled-informative">Informative</Badge>);
+    badge = screen.getByText("Informative");
+    expect(badge).toHaveClass("wui-bg-informative", "wui-text-informative-foreground");
   });
 
   it("renders with different sizes", () => {
