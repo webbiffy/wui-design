@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { BadgeCheckIcon, Bell } from "lucide-react";
+import { BadgeCheckIcon, Bell, Info } from "lucide-react";
 
 import { disableAllExcept, commonArgTypes } from "@/lib/storybook-utils";
 
@@ -22,10 +22,12 @@ const meta: Meta<typeof Badge> = {
         "bordered-neutral",
         "bordered-success",
         "bordered-danger",
+        "bordered-informative",
         // Filled
         "filled-primary",
         "filled-success",
         "filled-danger",
+        "filled-informative",
       ],
       table: {
         type: {
@@ -125,6 +127,13 @@ export const Variants: Story = {
             >
               Danger
             </Badge>
+            <Badge
+              variant="bordered-informative"
+              size={args.size}
+              radius={args.radius}
+            >
+              Informative
+            </Badge>
           </div>
         </div>
 
@@ -153,6 +162,13 @@ export const Variants: Story = {
               radius={args.radius}
             >
               Danger
+            </Badge>
+            <Badge
+              variant="filled-informative"
+              size={args.size}
+              radius={args.radius}
+            >
+              Informative
             </Badge>
           </div>
         </div>
@@ -233,6 +249,15 @@ export const WithIcon: Story = {
         <Bell className="wui-size-4 wui-text-danger" />
         99+
       </Badge>
+      <Badge
+        variant="bordered-informative"
+        size={args.size}
+        radius={args.radius}
+        className="wui-gap-1"
+      >
+        <Info className="wui-size-4 wui-text-informative" />
+        Info
+      </Badge>
     </div>
   ),
   args: {
@@ -264,6 +289,15 @@ export const WithDot: Story = {
       >
         <span className="wui-h-1 wui-w-1 wui-rounded-full wui-bg-danger" />
         Danger
+      </Badge>
+      <Badge
+        variant="bordered-informative"
+        size={args.size}
+        radius={args.radius}
+        className="wui-gap-1"
+      >
+        <span className="wui-h-1 wui-w-1 wui-rounded-full wui-bg-informative" />
+        Info
       </Badge>
     </div>
   ),
