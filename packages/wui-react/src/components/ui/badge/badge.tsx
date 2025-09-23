@@ -18,6 +18,8 @@ const badgeVariants = cva(
           "wui-border-success wui-bg-success/15 wui-text-success [a&]:hover:wui-bg-success/30",
         "bordered-danger":
           "wui-border-danger wui-bg-danger/15 wui-text-danger [a&]:hover:wui-bg-danger/30",
+        "bordered-informative":
+          "wui-border-informative wui-bg-informative/15 wui-text-informative [a&]:hover:wui-bg-informative/30",
 
         // Filled
         "filled-primary":
@@ -26,6 +28,8 @@ const badgeVariants = cva(
           "wui-border-transparent wui-bg-success wui-text-success-foreground [a&]:hover:wui-bg-success/90",
         "filled-danger":
           "wui-border-transparent wui-bg-danger wui-text-danger-foreground [a&]:hover:wui-bg-danger/90",
+        "filled-informative":
+         "wui-border-transparent wui-bg-informative wui-text-informative-foreground [a&]:hover:wui-bg-informative/90",
       },
       size: {
         default: "wui-text-xs wui-py-0.5 wui-px-2",
