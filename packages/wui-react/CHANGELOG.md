@@ -1,5 +1,11 @@
 # @wui.design/wui-react
 
+## 1.2.0
+
+### Minor Changes
+
+- [#8](https://github.com/webbiffy/wui-design/pull/8) [`5cfb5d9`](https://github.com/webbiffy/wui-design/commit/5cfb5d94f202d6cf3f0954808fe85b6578132a6d) Thanks [@VivianMrnd](https://github.com/VivianMrnd)! - - # Add "informative" variant
+
 ## 1.1.0
 
 ### Minor Changes
