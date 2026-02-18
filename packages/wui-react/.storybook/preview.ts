@@ -3,7 +3,6 @@ import "../src/index.css";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -33,7 +32,6 @@ const preview: Preview = {
           { value: "theme-2", title: "Theme 2" },
         ],
         dynamicTitle: true,
-        showName: true,
       },
     },
     background: {
@@ -45,7 +43,7 @@ const preview: Preview = {
           { value: "light", icon: "sun", title: "Light Mode" },
           { value: "dark", icon: "moon", title: "Dark Mode" },
         ],
-        showName: true,
+        dynamicTitle: true,
       },
     },
   },
@@ -97,7 +95,7 @@ const preview: Preview = {
 
           // Apply to story canvas areas in docs mode
           const storyCanvases = document.querySelectorAll(
-            ".docs-story, .sbdocs .sb-story, .sb-story"
+            ".docs-story, .sbdocs .sb-story, .sb-story",
           );
           storyCanvases.forEach((canvas) => {
             (canvas as HTMLElement).style.backgroundColor = canvasColor;
