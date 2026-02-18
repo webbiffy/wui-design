@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
@@ -29,7 +29,7 @@ const badgeVariants = cva(
         "filled-danger":
           "wui-border-transparent wui-bg-danger wui-text-danger-foreground [a&]:hover:wui-bg-danger/90",
         "filled-informative":
-         "wui-border-transparent wui-bg-informative wui-text-informative-foreground [a&]:hover:wui-bg-informative/90",
+          "wui-border-transparent wui-bg-informative wui-text-informative-foreground [a&]:hover:wui-bg-informative/90",
       },
       size: {
         default: "wui-text-xs wui-py-0.5 wui-px-2",
@@ -47,13 +47,13 @@ const badgeVariants = cva(
       size: "default",
       radius: "default",
     },
-  }
+  },
 );
 
 interface BadgeProps
   extends React.ComponentProps<"span">,
     VariantProps<typeof badgeVariants> {
-  asChild?: boolean;
+  render?: React.ReactElement;
 }
 
 function Badge({
@@ -61,18 +61,20 @@ function Badge({
   variant,
   size,
   radius,
-  asChild = false,
+  render,
   ...props
 }: React.ComponentProps<"span"> & BadgeProps) {
-  const Comp = asChild ? Slot : "span";
+  const element = useRender({
+    defaultTagName: "span",
+    render,
+    props: {
+      "data-slot": "badge",
+      className: cn(badgeVariants({ variant, size, radius }), className),
+      ...props,
+    },
+  });
 
-  return (
-    <Comp
-      data-slot="badge"
-      className={cn(badgeVariants({ variant, size, radius }), className)}
-      {...props}
-    />
-  );
+  return element;
 }
 
 export { Badge, type BadgeProps };

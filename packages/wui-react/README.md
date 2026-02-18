@@ -9,7 +9,7 @@ A modern, accessible, and customizable UI kit built with React, TypeScript, Tail
 ## Features
 
 - **Modern Design**: Beautiful, clean, and consistent components
-- **Accessibility First**: Built with accessibility in mind using Radix UI primitives
+- **Accessibility First**: Built with accessibility in mind using Base UI
 - **Fully Customizable**: Easy to customize with CSS variables and Tailwind utilities
 - **Tree Shakable**: Only import what you need
 - **Dark Mode Ready**: Built-in dark mode support

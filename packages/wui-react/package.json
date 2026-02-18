@@ -100,7 +100,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2"
+    "@base-ui/react": "^1.2.0"
   },
   "keywords": [
     "ui-react",
@@ -108,6 +108,7 @@
     "typescript",
     "tailwindcss",
     "shadcn",
+    "base-ui",
     "components",
     "ui-library"
   ],
