@@ -11,7 +11,7 @@ describe("Badge", () => {
     expect(badge).toHaveClass(
       "wui-border-primary",
       "wui-text-xs",
-      "wui-rounded-md"
+      "wui-rounded-md",
     );
     expect(badge).toHaveAttribute("data-slot", "badge");
   });
@@ -37,7 +37,10 @@ describe("Badge", () => {
 
     rerender(<Badge variant="bordered-informative">Informative</Badge>);
     badge = screen.getByText("Informative");
-    expect(badge).toHaveClass("wui-border-informative", "wui-bg-informative/15");
+    expect(badge).toHaveClass(
+      "wui-border-informative",
+      "wui-bg-informative/15",
+    );
 
     // Test filled variants
     rerender(<Badge variant="filled-primary">Primary</Badge>);
@@ -54,7 +57,10 @@ describe("Badge", () => {
 
     rerender(<Badge variant="filled-informative">Informative</Badge>);
     badge = screen.getByText("Informative");
-    expect(badge).toHaveClass("wui-bg-informative", "wui-text-informative-foreground");
+    expect(badge).toHaveClass(
+      "wui-bg-informative",
+      "wui-text-informative-foreground",
+    );
   });
 
   it("renders with different sizes", () => {
@@ -95,7 +101,7 @@ describe("Badge", () => {
     render(
       <Badge render={<a href="/test" aria-label="Link Badge" />}>
         Link Badge
-      </Badge>
+      </Badge>,
     );
 
     const link = screen.getByRole("link");
@@ -120,7 +126,7 @@ describe("Badge", () => {
         className="custom-badge"
       >
         Combined
-      </Badge>
+      </Badge>,
     );
 
     const badge = screen.getByText("Combined");
@@ -137,7 +143,7 @@ describe("Badge", () => {
       "wui-min-h-5",
       "wui-min-w-5",
       // Custom class
-      "custom-badge"
+      "custom-badge",
     );
   });
 
@@ -145,7 +151,7 @@ describe("Badge", () => {
     render(
       <Badge data-testid="test-badge" title="Badge title" id="badge-id">
         Props Badge
-      </Badge>
+      </Badge>,
     );
 
     const badge = screen.getByTestId("test-badge");
