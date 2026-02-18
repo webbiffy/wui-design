@@ -1,6 +1,6 @@
 # Wui Design
 
-A comprehensive design system for web applications, built with modern tools and best practices.
+A practical design system for web apps, built with modern tools and best practices.
 
 ## Overview
 
@@ -10,7 +10,7 @@ Wui Design is a repository workspace containing reusable UI components for build
 
 ### @wui.design/wui-react
 
-React UI component library with TypeScript support, built on shadcn/ui and Radix UI primitives.
+React UI component library with TypeScript support, built on shadcn/ui and Base UI.
 
 - [Full Documentation](./packages/wui-react/README.md)
 - [Quick Start](./packages/wui-react/README.md#quick-start)
@@ -103,5 +103,5 @@ Webster P.
 ## Acknowledgments
 
 - [shadcn/ui](https://ui.shadcn.com/) for component inspiration
-- [Radix UI](https://www.radix-ui.com/) for accessible primitives
+- [Base UI](https://base-ui.com/) for accessible primitives
 - [Tailwind CSS](https://tailwindcss.com/) for utility-first styling
