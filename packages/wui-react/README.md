@@ -1,6 +1,6 @@
 # Wui UI - React
 
-Part of [Wui Design](../../README.md) - A comprehensive design system for any React application.
+Part of [Wui Design](../../README.md) - A simple design system for any React application.
 
 A modern, accessible, and customizable UI kit built with React, TypeScript, Tailwind CSS, and based on shadcn/ui components. Perfect for building consistent user interfaces across Next.js and React applications.
 
