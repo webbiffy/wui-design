@@ -93,7 +93,7 @@ describe("Badge", () => {
 
   it("renders custom element via render prop", () => {
     render(
-      <Badge render={<a href="/test" />}>
+      <Badge render={<a href="/test" aria-label="Link Badge" />}>
         Link Badge
       </Badge>
     );

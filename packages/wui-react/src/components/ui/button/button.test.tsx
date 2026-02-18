@@ -96,7 +96,7 @@ describe("Button", () => {
 
   it("renders custom element via render prop", () => {
     render(
-      <Button render={<a href="/test" />}>
+      <Button render={<a href="/test" aria-label="Link Button" />}>
         Link Button
       </Button>
     );
