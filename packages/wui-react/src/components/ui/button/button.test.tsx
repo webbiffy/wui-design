@@ -94,10 +94,10 @@ describe("Button", () => {
     expect(button).toHaveClass("custom-class");
   });
 
-  it("renders as child when asChild is true", () => {
+  it("renders custom element via render prop", () => {
     render(
-      <Button asChild>
-        <a href="/test">Link Button</a>
+      <Button render={<a href="/test" />}>
+        Link Button
       </Button>
     );
 

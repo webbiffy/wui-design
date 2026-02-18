@@ -91,10 +91,10 @@ describe("Badge", () => {
     expect(badge).toHaveClass("custom-class");
   });
 
-  it("renders as child when asChild is true", () => {
+  it("renders custom element via render prop", () => {
     render(
-      <Badge asChild>
-        <a href="/test">Link Badge</a>
+      <Badge render={<a href="/test" />}>
+        Link Badge
       </Badge>
     );
 
