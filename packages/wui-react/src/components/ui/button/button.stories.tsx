@@ -14,6 +14,16 @@ const meta: Meta<typeof Button> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    render: {
+      control: false,
+      description:
+        "The custom element to render. <br /> Example: `<a href='/test' aria-label='Link Button' />`",
+      table: {
+        type: {
+          summary: "ReactElement",
+        },
+      },
+    },
     variant: {
       control: { type: "select" },
       description: "The visual style variant of the button",
