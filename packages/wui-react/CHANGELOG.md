@@ -1,5 +1,19 @@
 # @wui.design/wui-react
 
+## 1.3.0
+
+### Minor Changes
+
+- Add Tooltip component with Radix UI primitives
+  - Add Tooltip, TooltipTrigger, TooltipContent, and TooltipProvider components
+  - Support for positioning with automatic collision detection
+  - Configurable delay duration and side offset
+  - Smooth animations with fade and zoom effects
+  - Comprehensive test suite with 8 test cases covering interactions and edge cases
+  - Full Storybook integration with interactive controls
+  - TypeScript type exports
+  - Added tooltip examples to dev.tsx demo page
+
 ## 1.2.0
 
 ### Minor Changes
