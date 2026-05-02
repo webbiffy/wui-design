@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- Add Tooltip component with Radix UI primitives
+- [#20](https://github.com/webbiffy/wui-design/pull/20) [`5562162`](https://github.com/webbiffy/wui-design/commit/55621629dc50126488015e548998a49779929787) Thanks [@Blyn04](https://github.com/Blyn04)! - Add Tooltip component with Radix UI primitives
   - Add Tooltip, TooltipTrigger, TooltipContent, and TooltipProvider components
   - Support for positioning with automatic collision detection
   - Configurable delay duration and side offset
