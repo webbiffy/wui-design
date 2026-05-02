@@ -100,8 +100,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@base-ui/react": "^1.2.0",
-    "@radix-ui/react-tooltip": "^1.0.7"
+    "@base-ui/react": "^1.2.0"
   },
   "keywords": [
     "ui-react",
