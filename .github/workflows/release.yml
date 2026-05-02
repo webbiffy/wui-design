@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     # Only run if CI completed successfully
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -29,6 +33,9 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.12.4
+
+      - name: Upgrade npm to latest
+        run: npm install -g npm@latest
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -62,4 +69,4 @@ jobs:
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
