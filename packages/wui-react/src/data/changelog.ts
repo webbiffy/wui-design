@@ -25,7 +25,7 @@ export const changelog: ChangelogSection[] = [
     changes: [
       {
         type: "minor",
-        description: "Add Tooltip component with Radix UI primitives",
+        description: "Add Tooltip and ButtonTooltip components",
         pr: "#20",
         prUrl: "https://github.com/webbiffy/wui-design/pull/20",
         commit: "5562162",

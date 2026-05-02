@@ -4,15 +4,11 @@
 
 ### Minor Changes
 
-- [#20](https://github.com/webbiffy/wui-design/pull/20) [`5562162`](https://github.com/webbiffy/wui-design/commit/55621629dc50126488015e548998a49779929787) Thanks [@Blyn04](https://github.com/Blyn04)! - Add Tooltip component with Radix UI primitives
-  - Add Tooltip, TooltipTrigger, TooltipContent, and TooltipProvider components
-  - Support for positioning with automatic collision detection
-  - Configurable delay duration and side offset
-  - Smooth animations with fade and zoom effects
-  - Comprehensive test suite with 8 test cases covering interactions and edge cases
-  - Full Storybook integration with interactive controls
-  - TypeScript type exports
-  - Added tooltip examples to dev.tsx demo page
+- [#20](https://github.com/webbiffy/wui-design/pull/20) [`5562162`](https://github.com/webbiffy/wui-design/commit/55621629dc50126488015e548998a49779929787) Thanks [@Blyn04](https://github.com/Blyn04)! - Add Tooltip and ButtonTooltip components
+  - Tooltip: hover/focus tooltip with positioning (top, right, bottom, left), configurable delay, optional arrow, and styled variants (default, success, danger, informative). Composed of TooltipProvider, Tooltip, TooltipTrigger, and TooltipContent.
+  - ButtonTooltip: click-to-open tooltip wrapped around a Button, with click-outside and Escape-to-close behavior. Supports ghost/outline button variants.
+  - TextTooltip: auto-tooltip for truncated text — shows the full text on hover only when the content is actually clipped.
+  - Default delayDuration is 300ms.
 
 ## 1.2.0
 
@@ -29,7 +25,6 @@
   ## "@wui.design/wui-react": minor
 
   Add Badge component with comprehensive variants and testing
-
   - Add Badge component with bordered, filled variants
   - Support for different sizes (default, sm, md) and radius options
   - Comprehensive test suite with 10 test cases
