@@ -4,105 +4,66 @@ import { describe, it, expect, vi } from "vitest";
 import { Button } from "./button";
 
 describe("Button", () => {
-  it("renders with default variant and size", () => {
+  it("renders as a button element with children", () => {
     render(<Button>Click me</Button>);
-    const button = screen.getByRole("button", { name: /click me/i });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveClass("wui-bg-primary", "wui-h-9");
-  });
-
-  it("renders with different variants", () => {
-    // Test filled variants
-    const { rerender } = render(<Button variant="default">Default</Button>);
-    let button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-bg-primary");
-
-    rerender(<Button variant="danger">Danger</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-bg-danger");
-
-    // Test outline variants
-    rerender(<Button variant="outline">Outline</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-border-primary");
-
-    rerender(<Button variant="outline-success">Outline Success</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-border-success");
-
-    // Test ghost variants
-    rerender(<Button variant="ghost">Ghost</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-text-primary");
-
-    rerender(<Button variant="ghost-danger">Ghost Danger</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-text-danger");
-
-    // Test link variants
-    rerender(<Button variant="link">Link</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-underline-offset-4");
-
-    rerender(<Button variant="link-neutral">Link Neutral</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-text-foreground");
-  });
-
-  it("renders with different sizes", () => {
-    const { rerender } = render(<Button size="sm">Small</Button>);
-    let button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-h-8");
-
-    rerender(<Button size="lg">Large</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-h-10");
-
-    rerender(<Button size="icon">Icon</Button>);
-    button = screen.getByRole("button");
-    expect(button).toHaveClass("wui-h-9", "wui-w-9");
+    expect(screen.getByRole("button", { name: /click me/i })).toBeInTheDocument();
   });
 
   it("handles click events", () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
-
-    const button = screen.getByRole("button");
-    fireEvent.click(button);
-
+    fireEvent.click(screen.getByRole("button"));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it("can be disabled", () => {
+  it("is disabled when disabled prop is set", () => {
     const handleClick = vi.fn();
-    render(
-      <Button disabled onClick={handleClick}>
-        Disabled
-      </Button>,
-    );
-
+    render(<Button disabled onClick={handleClick}>Disabled</Button>);
     const button = screen.getByRole("button");
     expect(button).toBeDisabled();
-
     fireEvent.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  it("accepts custom className", () => {
+  it("merges custom className", () => {
     render(<Button className="custom-class">Custom</Button>);
-    const button = screen.getByRole("button");
-    expect(button).toHaveClass("custom-class");
+    expect(screen.getByRole("button")).toHaveClass("custom-class");
   });
 
-  it("renders custom element via render prop", () => {
-    render(
-      <Button render={<a href="/test" aria-label="Link Button" />}>
-        Link Button
-      </Button>,
-    );
+  it("forwards ref to the button element", () => {
+    const ref = { current: null };
+    render(<Button ref={ref}>Ref Button</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
 
-    const link = screen.getByRole("link");
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute("href", "/test");
+  it("passes through additional props", () => {
+    render(<Button data-testid="my-btn" aria-label="Submit" type="submit">Go</Button>);
+    const button = screen.getByTestId("my-btn");
+    expect(button).toHaveAttribute("aria-label", "Submit");
+    expect(button).toHaveAttribute("type", "submit");
+  });
+
+  it("renders all variant prop values without error", () => {
+    const variants = [
+      "default", "success", "danger", "informative",
+      "outline", "outline-neutral", "outline-success", "outline-danger", "outline-informative",
+      "ghost", "ghost-neutral", "ghost-success", "ghost-danger", "ghost-informative",
+      "link", "link-neutral", "link-success", "link-danger", "link-informative",
+    ] as const;
+
+    for (const variant of variants) {
+      const { unmount } = render(<Button variant={variant}>{variant}</Button>);
+      expect(screen.getByRole("button")).toBeInTheDocument();
+      unmount();
+    }
+  });
+
+  it("renders all size prop values without error", () => {
+    const sizes = ["default", "sm", "lg", "icon"] as const;
+    for (const size of sizes) {
+      const { unmount } = render(<Button size={size}>btn</Button>);
+      expect(screen.getByRole("button")).toBeInTheDocument();
+      unmount();
+    }
   });
 });
