@@ -73,11 +73,6 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: "0.5rem" };
-const column: React.CSSProperties = { display: "flex", flexDirection: "column", gap: "1.5rem" };
-const label: React.CSSProperties = { fontSize: "0.875rem", fontWeight: 500, marginBottom: "0.5rem", color: "hsl(var(--wui-foreground))" };
-const iconSize: React.CSSProperties = { width: "1rem", height: "1rem" };
-
 export const Default: Story = {
   args: { children: "Button" },
   argTypes: { ...commonArgTypes.interactive() },
@@ -88,10 +83,10 @@ export const Variants: Story = {
   render: (args) => {
     const isIconSize = args.size === "icon";
     return (
-      <div style={column}>
+      <div className="sb-column">
         <div>
-          <h3 style={label}>Filled</h3>
-          <div style={row}>
+          <h3 className="sb-label">Filled</h3>
+          <div className="sb-row">
             <Button variant="default" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Default"}</Button>
             <Button variant="success" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Success"}</Button>
             <Button variant="danger" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Danger"}</Button>
@@ -100,8 +95,8 @@ export const Variants: Story = {
         </div>
 
         <div>
-          <h3 style={label}>Outline</h3>
-          <div style={row}>
+          <h3 className="sb-label">Outline</h3>
+          <div className="sb-row">
             <Button variant="outline" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Outline"}</Button>
             <Button variant="outline-neutral" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Outline Neutral"}</Button>
             <Button variant="outline-success" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Outline Success"}</Button>
@@ -111,8 +106,8 @@ export const Variants: Story = {
         </div>
 
         <div>
-          <h3 style={label}>Ghost</h3>
-          <div style={row}>
+          <h3 className="sb-label">Ghost</h3>
+          <div className="sb-row">
             <Button variant="ghost" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Ghost"}</Button>
             <Button variant="ghost-neutral" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Ghost Neutral"}</Button>
             <Button variant="ghost-success" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Ghost Success"}</Button>
@@ -122,8 +117,8 @@ export const Variants: Story = {
         </div>
 
         <div>
-          <h3 style={label}>Link</h3>
-          <div style={row}>
+          <h3 className="sb-label">Link</h3>
+          <div className="sb-row">
             <Button variant="link" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Link"}</Button>
             <Button variant="link-neutral" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Link Neutral"}</Button>
             <Button variant="link-success" size={args.size} disabled={args.disabled}>{isIconSize ? <Download /> : "Link Success"}</Button>
@@ -139,7 +134,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem" }}>
+    <div className="sb-row-lg">
       <Button size="sm" disabled={args.disabled} variant={args.variant}>Small</Button>
       <Button size="default" disabled={args.disabled} variant={args.variant}>Default</Button>
       <Button size="lg" disabled={args.disabled} variant={args.variant}>Large</Button>
@@ -152,7 +147,7 @@ export const Sizes: Story = {
 
 export const States: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem" }}>
+    <div className="sb-row-lg">
       <Button size={args.size} variant={args.variant}>
         {args.size !== "icon" && "Normal"}
         {args.size === "icon" && <Download />}
@@ -164,7 +159,7 @@ export const States: Story = {
       </Button>
 
       <Button disabled size={args.size} variant={args.variant} style={{ gap: "0.25rem" }}>
-        <Loader2Icon style={iconSize} />
+        <Loader2Icon className="sb-icon" />
         {args.size !== "icon" && "Loading"}
       </Button>
     </div>
@@ -175,19 +170,19 @@ export const States: Story = {
 
 export const WithIcon: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem" }}>
+    <div className="sb-row-lg">
       <Button size={args.size} style={{ gap: "0.25rem" }}>
-        <Plus style={iconSize} />
+        <Plus className="sb-icon" />
         {args.size !== "icon" && "Create"}
       </Button>
 
       <Button size={args.size} variant="danger" style={{ gap: "0.25rem" }}>
-        <Trash style={iconSize} />
+        <Trash className="sb-icon" />
         {args.size !== "icon" && "Delete"}
       </Button>
 
       <Button size={args.size} variant="success" style={{ gap: "0.25rem" }}>
-        <Download style={iconSize} />
+        <Download className="sb-icon" />
         {args.size !== "icon" && "Download"}
       </Button>
     </div>

@@ -1,0 +1,313 @@
+/* Layout helpers for Storybook story wrappers only — not shipped in dist */
+
+/* ─── Generic layout ─────────────────────────────────────────────────── */
+
+.sb-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sb-row-lg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sb-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sb-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: hsl(var(--wui-foreground));
+}
+
+.sb-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ─── Changelog ──────────────────────────────────────────────────────── */
+
+.cl-page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.cl-header {
+  border-bottom: 1px solid hsl(var(--wui-border));
+  padding-bottom: 1.5rem;
+}
+
+.cl-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: hsl(var(--wui-foreground));
+  margin: 0 0 0.5rem;
+}
+
+.cl-subtitle {
+  color: hsl(var(--wui-muted-foreground));
+  margin: 0;
+}
+
+.cl-meta {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: hsl(var(--wui-muted-foreground));
+}
+
+.cl-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: hsl(var(--wui-muted) / 0.5);
+  border-radius: 0.5rem;
+}
+
+.cl-filter-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--wui-foreground));
+}
+
+.cl-select {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid hsl(var(--wui-border));
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: hsl(var(--wui-foreground));
+  background: hsl(var(--wui-background));
+}
+
+.cl-filter-hint {
+  font-size: 0.875rem;
+  color: hsl(var(--wui-muted-foreground));
+}
+
+.cl-card {
+  border: 1px solid hsl(var(--wui-input));
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.cl-card-header {
+  background: hsl(var(--wui-muted) / 0.5);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid hsl(var(--wui-border));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cl-version {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--wui-foreground));
+  margin: 0;
+}
+
+.cl-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.cl-badge-latest {
+  background: hsl(var(--wui-informative) / 0.1);
+  color: hsl(var(--wui-informative));
+  border-color: hsl(var(--wui-informative) / 0.2);
+}
+
+.cl-badge-patch {
+  background: hsl(var(--wui-success) / 0.1);
+  color: hsl(var(--wui-success));
+  border-color: hsl(var(--wui-success) / 0.2);
+}
+
+.cl-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cl-change-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.cl-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  margin-top: 0.375rem;
+}
+
+.cl-change-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cl-change-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cl-description {
+  font-size: 0.875rem;
+  color: hsl(var(--wui-foreground));
+  margin: 0;
+  flex: 1;
+}
+
+.cl-details {
+  list-style: none;
+  margin: 0.5rem 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cl-detail {
+  font-size: 0.75rem;
+  color: hsl(var(--wui-muted-foreground));
+  position: relative;
+}
+
+.cl-detail::before {
+  content: "•";
+  position: absolute;
+  left: -0.75rem;
+  color: hsl(var(--wui-muted-foreground) / 0.5);
+}
+
+.cl-type-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.cl-change-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: hsl(var(--wui-muted-foreground));
+}
+
+.cl-pr-chip {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: hsl(var(--wui-success) / 0.1);
+  border: 1px solid hsl(var(--wui-success) / 0.2);
+  transition: background 150ms;
+}
+
+.cl-pr-chip:hover {
+  background: hsl(var(--wui-success) / 0.2);
+}
+
+.cl-pr-link {
+  color: hsl(var(--wui-success));
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.cl-pr-link:hover {
+  color: hsl(var(--wui-success) / 0.8);
+}
+
+.cl-commit-chip {
+  font-family: monospace;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background 150ms;
+}
+
+.cl-commit-chip-linked {
+  background: hsl(var(--wui-informative) / 0.1);
+  border: 1px solid hsl(var(--wui-informative) / 0.2);
+}
+
+.cl-commit-chip-linked:hover {
+  background: hsl(var(--wui-informative) / 0.2);
+}
+
+.cl-commit-chip-plain {
+  background: hsl(var(--wui-muted));
+}
+
+.cl-commit-link {
+  color: hsl(var(--wui-informative));
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.cl-commit-link:hover {
+  color: hsl(var(--wui-informative) / 0.8);
+}
+
+.cl-author-link {
+  color: hsl(var(--wui-informative));
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.cl-author-link:hover {
+  color: hsl(var(--wui-informative) / 0.8);
+  text-decoration: underline;
+}
+
+.cl-footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid hsl(var(--wui-input));
+}
+
+.cl-footer-text {
+  font-size: 0.875rem;
+  color: hsl(var(--wui-muted-foreground));
+  margin: 0;
+}
+
+.cl-footer-link {
+  color: hsl(var(--wui-informative));
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.cl-footer-link:hover {
+  color: hsl(var(--wui-informative) / 0.8);
+}

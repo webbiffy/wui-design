@@ -60,11 +60,6 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem" };
-const column: React.CSSProperties = { display: "flex", flexDirection: "column", gap: "1.5rem" };
-const label: React.CSSProperties = { fontSize: "0.875rem", fontWeight: 500, marginBottom: "0.5rem", color: "hsl(var(--wui-foreground))" };
-const iconSize: React.CSSProperties = { width: "1rem", height: "1rem" };
-
 export const Default: Story = {
   args: { children: "Badge" },
   argTypes: { ...commonArgTypes.interactive() },
@@ -73,10 +68,10 @@ export const Default: Story = {
 export const Variants: Story = {
   args: { size: "default" },
   render: (args) => (
-    <div style={column}>
+    <div className="sb-column">
       <div>
-        <h3 style={label}>Bordered</h3>
-        <div style={row}>
+        <h3 className="sb-label">Bordered</h3>
+        <div className="sb-row">
           <Badge variant="default" size={args.size} radius={args.radius}>Default</Badge>
           <Badge variant="bordered-neutral" size={args.size} radius={args.radius}>Neutral</Badge>
           <Badge variant="bordered-success" size={args.size} radius={args.radius}>Success</Badge>
@@ -86,8 +81,8 @@ export const Variants: Story = {
       </div>
 
       <div>
-        <h3 style={label}>Filled</h3>
-        <div style={row}>
+        <h3 className="sb-label">Filled</h3>
+        <div className="sb-row">
           <Badge variant="filled-primary" size={args.size} radius={args.radius}>Primary</Badge>
           <Badge variant="filled-success" size={args.size} radius={args.radius}>Success</Badge>
           <Badge variant="filled-danger" size={args.size} radius={args.radius}>Danger</Badge>
@@ -101,7 +96,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <div style={row}>
+    <div className="sb-row">
       <Badge size="default" variant={args.variant} radius={args.radius}>Default</Badge>
       <Badge size="sm" variant={args.variant} radius={args.radius}>Small</Badge>
       <Badge size="md" variant={args.variant} radius={args.radius}>Medium</Badge>
@@ -113,7 +108,7 @@ export const Sizes: Story = {
 
 export const Radius: Story = {
   render: (args) => (
-    <div style={row}>
+    <div className="sb-row">
       <Badge radius="default" variant={args.variant}>Default</Badge>
       <Badge radius="xl" variant={args.variant}>Extra Large (xl)</Badge>
       <Badge radius="full" variant={args.variant}>Full</Badge>
@@ -125,19 +120,19 @@ export const Radius: Story = {
 
 export const WithIcon: Story = {
   render: (args) => (
-    <div style={row}>
+    <div className="sb-row">
       <Badge variant="filled-success" size={args.size} radius={args.radius} style={{ gap: "0.25rem" }}>
-        <BadgeCheckIcon style={iconSize} />
+        <BadgeCheckIcon className="sb-icon" />
         Verified
       </Badge>
 
       <Badge variant="bordered-neutral" size={args.size} radius={args.radius} style={{ gap: "0.25rem" }}>
-        <Bell style={{ ...iconSize, color: "hsl(var(--wui-danger))" }} />
+        <Bell className="sb-icon" style={{ color: "hsl(var(--wui-danger))" }} />
         99+
       </Badge>
 
       <Badge variant="bordered-informative" size={args.size} radius={args.radius} style={{ gap: "0.25rem" }}>
-        <Info style={{ ...iconSize, color: "hsl(var(--wui-informative))" }} />
+        <Info className="sb-icon" style={{ color: "hsl(var(--wui-informative))" }} />
         Info
       </Badge>
     </div>
@@ -148,7 +143,7 @@ export const WithIcon: Story = {
 
 export const WithDot: Story = {
   render: (args) => (
-    <div style={row}>
+    <div className="sb-row">
       <Badge variant="bordered-success" size={args.size} radius={args.radius} style={{ gap: "0.25rem" }}>
         <span style={{ width: "0.25rem", height: "0.25rem", borderRadius: "9999px", background: "hsl(var(--wui-success))" }} />
         Success
